@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src = "lib/easeljs.min.js"></script>
+    <script src = "../TweenJS/lib/tweenjs.min.js"></script>
+</head>
+<body onload="init()" style="margin: 20px;">
+<canvas id="canvas" width="800" height="600" style="border: black solid 1px"></canvas>
+</body>
+<script>
+    var stage;
+    function init(){
+        stage = new createjs.Stage(document.getElementById('canvas'));
+        createjs.Ticker.addEventListener("tick",handleTick);
+        createjs.Ticker.setFPS(60);//设置更新频率为60帧每秒
+        start();
+    }
+    
+    //实现更新舞台效果
+    function handleTick(e){
+        stage.update();
+    }
+
+//调用start（）hanshu huizhi rectangle矩形，circle圆形、star星形、triangle三角形和roundrectangle圆角矩形。
+    function start(){
+        //rectangle
+        var rectangle = new createjs.Shape();
+        rectangle.graphics.beginStroke('#000');
+        rectangle.graphics.beginFill('#FF0000');
+        rectangle.graphics.drawRect(0,0,150,100);
+        rectangle.x = rectangle.y = 20;
+        stage.addChild(rectangle);
+        //circle
+        var circle = new createjs.Shape();
+        circle.graphics.beginStroke("#000");
+        circle.graphics.beginFill('#FF0000');
+        circle.graphics.drawCircle(0,0,50);
+        circle.x = 250;
+        circle.y = 70;
+        stage.add(circle);
+        //star
+        var poly = new createjs.Shape();
+        poly.graphics.beginStroke('#000');
+        poly.graphics.beginFill('#90ABC2');
+        poly.graphics.drawPolyStar(0,0,60,6,0.6);
+        poly.x = 400;
+        poly.y = 70;
+        stage.addChild(poly);
+        //triangle
+        var tri = new createjs.Shape();
+        tri.graphics.beginStroke('#000');
+        tri.graphics.beginFill('#00FF00');
+        tri.graphics.moveTo(50,0)
+                .lineTo(0,100)
+                .lineTo(100,100)
+                .lineTo(50,0);
+        tri.x = 20;
+        tri.y = 150;
+
+        stage.addChild(tri);
+
+        //rounded rectangle
+        var roundRectangle = new createjs.Shape();
+        roundRectangle.graphics.beginStroke('#000');
+        roundRectangle.graphics.beginFill('#F7D0D1');
+        roundRectangle.graphics.drawRoundRect(0,0,400,100,10);
+        roundRectangle.x = roundRectangle.y = 150;
+        stage.addChild(roundRectangle);
+    }
+</script>
+</html>
