@@ -1,3 +1,0 @@
-# CreateJS
-基于createJS函数库的各类图形处理的前端基础知识，实现HTML5小游戏经典案例
-EaselJS事件，实现对事件的监听和处理
