@@ -32,3 +32,15 @@
     }
 </script>
 </html>
+//修改代码段如下，可实现绕矩形中心旋转的效果；
+function  start(){
+      var g = new createjs.Graphics();
+      g.beginStroke('#000').beginFill('FF0000').drawRect(0,0,100,100);
+      var square = new createjs.Shape(g);
+      square.regX = square.regY = 50;
+      //改变旋转方式为绕着中心店旋转；
+      square.x = stage.canvas.width/2;
+      square.y = stage.canvas.height/2;
+      stage.addChild(square);
+      createjs.Tween.get(square).to({rotation:360},3000);
+  }
