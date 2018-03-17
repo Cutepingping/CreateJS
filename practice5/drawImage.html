@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+img标签:<br/>
+<img src = "image/2.jpg">
+<br/>Canvas画板：<br/>
+<canvas id="myCanvas" width="400" height = "400">
+    您的浏览器不支持HTML5
+</canvas>
+<script type="text/javascript">
+var c=document.getElementById("myCanvas");
+var ctx= c.getContext("2d");
+var image = new image();
+image.src = "image/2.jpg";
+image.onload = function(){
+    ctx.drawImage(image,10,10);
+    ctx.drawImage(image,150,10,150,150);
+    ctx.drawImage(image,10,10,50,50,210,10,200,200);
+};
+</script>
+</body>
+</html>

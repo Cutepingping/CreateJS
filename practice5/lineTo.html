@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+    function draw(id){
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#eeeeef"; //设置绘图区域颜色
+        context.fillRect(0,0,300,400);   //画矩形
+        var dx = 150;
+        var dy = 150;
+        var s = 100;
+        context.beginPath();//开始绘图
+        context.fillStyle = "rgb(100,255,100)";//设置绘图区域
+        context.strokeStyle = "rgb(0,0,100)";//设置线条颜色
+        var x = Math.sin(0);
+        var y = Math.cos(0);
+         var dig = Math.PI/15*11;
+        for(var i = 0; i < 30; i++ ){
+            var x = Math.sin( i * dig );
+            var y = Math.cos( i * dig );
+            context.lineTo( dx + x * s ,dy + y * s );
+        }
+        context.closePath();
+        context.fill();
+        context.stroke();
+    }
+</script>
+</head>
+<body onload="draw('canvas')">
+<!--move to line to-->
+<canvas id="canvas" width="300" height="400"></canvas>
+</body>
+</html>
