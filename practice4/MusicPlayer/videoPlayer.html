@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义视频播放器</title>
+</head>
+<body>
+<div id="videoDiv">
+    <video id="myVideo" poster="images/骗.png" controls>
+        <source src="video/白色花开.mp4" type="video/mp4">
+        您的浏览器不支持<video/>标签
+    </video>
+</div>
+<div id="controlBar">
+    <input id="videoPlayer" type="button" value="开始播放">
+    <input id="videoRange" type="range" width="150px" value="0" max="100"/>
+    <input id="videoInfo" type="text" disabled style="width: 70px"/>
+    <input id="videoVoice" type="button" value="静音">
+</div>
+<script type="text/javascript">
+    var myVideo=document.getElementById("myVideo");
+    var videoPlayer=document.getElementById("videoPlayer");
+    var videoRange=document.getElementById("videoRange");
+    var videoVoice=document.getElementById("videoVoice");
+    var videoInfo=document.getElementById("videoInfo");
+    //播放暂停按钮
+    videoPlayer.onclick=function(){
+        if(myVideo.paused){
+            myVideo.play();
+            videoPlayer.value="暂停播放";
+        }else{
+            myVideo.pause();
+            videoPlayer.value="开始播放";
+        }
+    };
+    //视频播放时，滚动条同步
+    myVideo.ontimeupdate=function(){
+        var currentTime=
+                Math.round(myVideo.currentTime*Math.pow(10,2))/Math.pow(10,2);
+        var totalTime
+        =Math.round(myVideo.duration*Math.pow(10,2))/Math.pow(10,2);
+        videoInfo.value=currentTime+"/"+totalTime;
+        videoRange.value=(currentTime/totalTime)*100;
+        if(myVideo.ended){
+            videoRange.value=0;
+        }
+    };
+    //拖动滚动条时，视频进度同步
+    videoRange.onmousedown=function(){
+        myVideo.pause();
+    };
+    videoRange.onmouseup=function(){
+        myVideo.currentTime=myVideo.duration*(videoRange.value/videoRange.max);
+        myVideo.play();
+    };
+    //静音或取消静音
+    videoVoice.onclick=function(){
+        if(!myVideo.muted){
+            videoVoice.value="取消静音";
+            myVideo.muted=true;
+        }else{
+            videoVoice.value="静音";
+            myVideo.muted=false;
+        }
+    };
+</script>
+</body>
+</html>
