@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5布局直流-浮动元素对其他元素的影响</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style type="text/css">
+        .box { border: 5px solid black; }
+        .con1 { width: 200px; height: 100px; border: 1px solid blue; }
+        .con2 { float: left; width: 100px; height: 80px; background: #999; }
+        .con3 { width: 200px; height: 100px; border: 1px solid red;}
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="con1">第一个div</div>
+    <div class="con2">第二个div</div>
+    <div class="con3">第三个div</div>
+</div>
+</body>
+</html>
+/*浮动元素会对兄弟级元素造成影响，但是针对他后面的兄弟及元素，并不会对前面兄弟及元素的布局造成影响。*/

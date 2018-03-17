@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5中的拖放</title>
+    <style type="text/css">
+        .goodList{
+            width: 440px;
+            height: 390px;
+            background-color: #ccc;
+            float: left;
+            }
+        .shoppingCart{
+            width: 440px;
+            height:390px;
+            background-color: #ccc;
+            float: left;
+            margin-left: 50px;
+        }
+        img{
+            width: 100px;
+            height: 147px;
+            margin: 3px;
+        }
+        #emptyDiv{
+            width: 50px;
+            height:50px;
+            background-color: #F60;
+        }
+    </style>
+    <script type="text/javascript">
+        //创建一个图像元素
+        var myIcon=document.createElement("img");
+        myIcon.src="images/myIcon.gif";
+        function drag(e){
+            e.getDataTransferItem.effectAllowed="link";
+            //IE不支持，EF/chrome支持该效果
+            //e.dataTransfer.setDragImage(myIcon,0,0);
+            e.dataTransfer.setData("text", e.garget.id);
+            //e.dataTransfei.setData("text/pain",e.target.id);//标准写法
+        }
+        function drop(e){
+            allowDrop(e);
+            var data= e.dataTransfer.getData("text");
+         //如果目标是div标签，则在其中添加内容
+            if (e.target.tagName== "DIV"){
+                e.target.appendChild(document.getElementById(data));
+            }else if(e.target.tagName=="IMG") {
+                //如果目标是IMG标签，则在其父标签内添加内容
+                e.target.parentNode.appendChild(document.getElementById(data));
+            }
+        }
+        function allowDrop(e){
+            e.preventDefault();//通过浏览器不再执行事件相关的默认相关
+            e.stopPropagation();//阻止事件冒泡
+        }
+    </script>
+</head>
+<body>
+<div class="goodsList" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h2>商品列表</h2><hr/>
+    <img id="image1" src="images/goods1.jpg" ondragstart="drag(event)"/>
+    <img id="image2" src="images/goods2.jpg" ondragstart="drag(event)"/>
+    <img id="image3" src="images/goods3.jpg" ondragstart="drag(event)"/>
+    <img id="image4" src="images/goods4.jpg" ondragstart="drag(event)"/>
+</div>
+<div class="shoppingCart" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <h2>购物车</h2><hr>
+</div>
+</body>
+</html>
