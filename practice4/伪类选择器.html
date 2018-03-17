@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器演示</title>
+</head>
+<style type="text/css">
+    a:link{color: gray;text-decoration: none;}
+    a:visited{color: blue;text-decoration: none;}
+    a:hover{color: red;text-decoration: underline;}
+    a:active{color: yellow;text-decoration: underline;}
+    p:first-letter{font-weight: bold;font-family: "华文新魏";}
+    p:first-line{font-size: 32px}
+</style>
+<body>
+<p>在支持css的浏览器中，连接的不同状态都可以不同的方式显示，这些状态包括：活动状态，已被访问状态，未被访问状态和鼠标悬停状态。<br>
+注意：a:hover必须被置于a:link和a:visited之后，才是有效的。a:active必须被置于a:hover之后，才能有效
+</p>
+<a href="http://www.baidu.com">搜索一下：百度</a>
+</body>
+</html>
